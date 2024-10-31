@@ -1,0 +1,99 @@
+<div class="order-form-container" id="orderFormContainer">
+    <div class="order-form">
+        <!-- Back Button -->
+        <div class="back-button" onclick="goBackToExchange()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M19 12H5M12 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-details">
+                <div class="summary-row">
+                    <span>You Send:</span>
+                    <span id="summaryAmount"></span>
+                </div>
+                <div class="summary-row">
+                    <span>You Receive:</span>
+                    <span id="summaryReceive"></span>
+                </div>
+                <div class="summary-row">
+                    <span>Exchange Rate:</span>
+                    <span id="summaryRate"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Details Form -->
+<form class="order-form" onsubmit="submitOrder(event)">
+    <!-- Existing form content -->
+    <div class="form-section">
+        <h3>Personal Details</h3>
+        <div class="form-group">
+            <input type="text" name="fullName" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h3>Delivery Method</h3>
+        <div class="delivery-options">
+            <label class="delivery-option">
+                <input type="radio" name="delivery-method" value="pickup" required checked>
+                <div>
+                    <span class="option-title">Office Pickup (Free)</span>
+                    <span class="option-description">Pick up from our office</span>
+                </div>
+            </label>
+            <label class="delivery-option">
+                <input type="radio" name="delivery-method" value="delivery" required>
+                <div>
+                    <span class="option-title">Home Delivery ($30)</span>
+                    <span class="option-description">Secure delivery via Canada Post</span>
+                </div>
+            </label>
+        </div>
+
+        <div id="pickupLocationSection">
+            <select name="pickupLocation" required>
+                <option value="">Select Pickup Location</option>
+                <option value="Toronto">Toronto Office - 123 Finance St</option>
+                <option value="Vancouver">Vancouver Office - 456 Exchange Ave</option>
+            </select>
+        </div>
+
+        <div id="deliveryAddressSection" style="display: none;">
+            <div class="form-group">
+                <input type="text" name="address" placeholder="Street Address">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" name="city" placeholder="City">
+                </div>
+                <div class="form-group">
+                    <select name="province">
+                        <option value="">Select Province</option>
+                        <option value="ON">Ontario</option>
+                        <option value="BC">British Columbia</option>
+                        <!-- Add other provinces -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="postalCode" placeholder="Postal Code">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="submit-button">Confirm Order</button>
+</form>
+    </div>
+</div>

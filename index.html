@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Trust Currency Exchange</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+	<!-- Add this in the <head> section -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	<script type="text/javascript">
+    (function() {
+        // Replace with your actual EmailJS public key
+        emailjs.init("YOUR_PUBLIC_KEY");
+    })();
+</script>
+	
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/exchange.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <img src="images/logo.png" alt="Money Trust Logo" class="logo-img">
+            </div>
+        </a>
+                <div class="logo-text">Money Trust</div>
+            <nav class="nav-links">
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact</a>
+                <a href="#">Locations</a>
+            </nav>
+            <div class="phone">
+                📞 1 (416) 567-2222
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <h1>Convert USD to CAD online at Canada's best exchange rate.</h1>
+            <p>Use Money Trust for your currency conversions. Get better exchange rates than your bank with just a few clicks. No fees, no hassle - what you see is what you get.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3>No Hidden Fees</h3>
+                    <p>Transparent pricing with zero fees on all exchanges.</p>
+                </div>
+                <div class="feature">
+                    <h3>Best Rate Guarantee</h3>
+                    <p>We'll match or beat any competitor's exchange rate.</p>
+                </div>
+                <div class="feature">
+                    <h3>Secure & Fast</h3>
+                    <p>Same-day transfers with bank-grade security.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exchange Container -->
+        <div class="exchange-container">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('currency')">Currency Exchange</button>
+                <button class="tab" onclick="switchTab('gold')">Buy Gold</button>
+            </div>
+
+            <!-- Currency Exchange Form -->
+            <div class="exchange-form active" id="currencyForm">
+                <div class="form-group">
+                    <label class="form-label">You send</label>
+                    <div class="input-group">
+                        <input type="text" class="amount-input" value="1,000.00" id="sendAmount">
+                        <div class="currency-select-container">
+                            <select class="currency-select" id="sendCurrency"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rate-display">
+                    <span class="rate-text">1 CAD→0.74 USD</span><br></br>
+					                <button class="swap-button" onclick="swapCurrencies()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                        <path d="M7 10l5-5 5 5M7 14l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="form-label">You receive</label>
+                    <div class="input-group">
+                        <input type="text" class="amount-input" value="740.00" id="receiveAmount" readonly>
+                        <div class="currency-select-container">
+                            <select class="currency-select" id="receiveCurrency"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-section">
+                    <div>
+                        <div class="payment-method">Pay with: E-Transfer</div>
+                        <div class="free-text">Free first exchange</div>
+                    </div>
+                    <div class="pickup-info">
+                        <div>Available for pickup</div>
+                        <div style="font-weight: 500;">Today</div>
+                    </div>
+                </div>
+
+                <button class="submit-button" onclick="showOrderForm()">Lock in rate & order</button>
+            </div>
+
+            <!-- Gold Purchase Form -->
+<div id="goldForm" class="exchange-form">
+    <div class="form-group">
+        <label class="form-label">You pay</label>
+        <div class="input-group">
+            <input type="text" id="goldPayAmount" class="amount-input" placeholder="0.00">
+            <div class="currency-select-container">
+                <select id="goldCurrency" class="currency-select">
+                    <option value="CAD">CAD</option>
+                    <option value="USD">USD</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="rate-display">
+        <span class="rate-text">Current gold price: 2,485.75 CAD/oz</span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">You receive</label>
+        <div class="input-group">
+            <input type="text" id="goldReceiveAmount" class="amount-input" style="flex: 2;" placeholder="0.000" readonly>
+            <div class="currency-select-container gold-unit-select">
+                <select id="goldType" class="currency-select">
+                    <option value="oz">oz Gold</option>
+                    <option value="g">g Gold</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Gold Type</label>
+        <select id="goldPurity" class="currency-select">
+            <option value="24K">24K Gold (99.99% pure)</option>
+            <option value="22K">22K Gold (91.67% pure)</option>
+            <option value="18K">18K Gold (75.00% pure)</option>
+        </select>
+    </div>
+
+    <div class="payment-section">
+        <div>
+            <div class="payment-method">Pay with: E-Transfer</div>
+            <div class="free-text">Insured delivery available</div>
+        </div>
+        <div class="pickup-info">
+            <div>Available for pickup</div>
+            <div style="font-weight: 500;">Today</div>
+        </div>
+    </div>
+
+    <button onclick="showGoldOrderForm()" class="submit-button">Lock in price & buy</button>
+</div>
+        </div>
+
+        <!-- Order Form Container -->
+        <div id="orderFormContainer" class="order-form-container">
+            <div class="order-form">
+                <!-- Close Button -->
+                <button class="close-button" onclick="goBackToExchange()">×</button>
+
+                <!-- Back Button -->
+                <div class="back-button" onclick="goBackToExchange()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M19 12H5M12 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>You Send:</span>
+                            <span id="summaryAmount"></span>
+                        </div>
+                        <div class="summary-row">
+                            <span>You Receive:</span>
+                            <span id="summaryReceive"></span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Exchange Rate:</span>
+                            <span id="summaryRate"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Details Form -->
+                <form id="customerDetailsForm" onsubmit="submitOrder(event)">
+                    <div class="form-section">
+                        <h3>Personal Details</h3>
+                        <div class="form-group">
+                            <label for="fullName">Full Name*</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address*</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number*</label>
+                            <input type="tel" id="phone" pattern="[0-9]{10}" required placeholder="1234567890">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Address</h3>
+                        <div class="form-group">
+                            <label for="street">Street Address*</label>
+                            <input type="text" id="street" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City*</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="province">Province*</label>
+                                <select id="province" required>
+                                    <option value="">Select Province</option>
+                                    <option value="AB">Alberta</option>
+                                    <option value="BC">British Columbia</option>
+                                    <option value="MB">Manitoba</option>
+                                    <option value="NB">New Brunswick</option>
+                                    <option value="NL">Newfoundland and Labrador</option>
+                                    <option value="NS">Nova Scotia</option>
+                                    <option value="ON">Ontario</option>
+                                    <option value="PE">Prince Edward Island</option>
+                                    <option value="QC">Quebec</option>
+                                    <option value="SK">Saskatchewan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode">Postal Code*</label>
+                                <input type="text" id="postalCode" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" required placeholder="A1A 1A1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Delivery Method</h3>
+                        <div class="delivery-options">
+                            <div class="delivery-option">
+                                <input type="radio" id="pickup" name="deliveryMethod" value="pickup" checked onchange="updateDeliveryMethod()">
+                                <label for="pickup">
+                                    <span class="option-title">Office Pickup (Free)</span>
+                                    <span class="option-description">Pick up from our office in Toronto or Vancouver</span>
+                                </label>
+                            </div>
+                            <div class="delivery-option">
+                                <input type="radio" id="delivery" name="deliveryMethod" value="delivery" onchange="updateDeliveryMethod()">
+                                <label for="delivery">
+                                    <span class="option-title">Home Delivery ($30)</span>
+                                    <span class="option-description">Secure delivery via Canada Post</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="pickupLocationSection" class="pickup-location">
+                            <label for="pickupLocation">Select Pickup Location*</label>
+                            <select id="pickupLocation" required>
+                                <option value="">Select Location</option>
+                                <option value="toronto">Toronto Office - 123 Finance St, Toronto, ON</option>
+                                <option value="vancouver">Vancouver Office - 456 Exchange Ave, Vancouver, BC</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredDate">Preferred Date*</label>
+                            <input type="date" id="preferredDate" required min="">
+                        </div>
+                    </div>
+
+                    <!-- Total Amount Section -->
+                    <div class="total-section">
+                        <div class="total-row">
+                            <span>Exchange Amount:</span>
+                            <span id="exchangeAmount"></span>
+                        </div>
+                        <div class="total-row" id="deliveryFeeRow">
+                            <span>Delivery Fee:</span>
+                            <span>$0.00</span>
+                        </div>
+                        <div class="total-row total">
+                            <span>Total Amount:</span>
+                            <span id="totalAmount"></span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-button">Confirm Order</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/exchange.js"></script>
+    <script src="js/gold.js"></script>
+</body>
+</html>

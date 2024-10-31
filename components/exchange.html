@@ -1,0 +1,114 @@
+<!-- Exchange Component Container -->
+<div class="exchange-container">
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('currency')">Currency Exchange</button>
+        <button class="tab" onclick="switchTab('gold')">Buy Gold</button>
+    </div>
+
+    <!-- Currency Exchange Form -->
+   <div id="currencyForm" class="exchange-form active">
+    <div class="form-group">
+        <label class="form-label">You send</label>
+        <div class="input-group">
+            <input type="text" id="sendAmount" class="amount-input" placeholder="0.00">
+            <div class="currency-select-container">
+                <select id="sendCurrency" class="currency-select">
+                    <!-- options populated by JS -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="rate-section">
+        <div class="rate-display">
+            <span class="rate-text">1 CAD → 0.74 USD</span>
+        </div>
+        <button onclick="swapCurrencies()" class="swap-button" title="Swap Currencies">
+            <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                <path d="M7 10l5-5 5 5M7 14l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">You receive</label>
+        <div class="input-group">
+            <input type="text" id="receiveAmount" class="amount-input" readonly>
+            <div class="currency-select-container">
+                <select id="receiveCurrency" class="currency-select">
+                    <!-- options populated by JS -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="payment-section">
+        <div>
+            <div class="payment-method">Pay with: E-Transfer</div>
+            <div class="free-text">Free first exchange</div>
+        </div>
+        <div class="pickup-info">
+            <div>Available for pickup</div>
+            <div style="font-weight: 500;">Today</div>
+        </div>
+    </div>
+
+    <button onclick="showOrderForm()" class="submit-button">Lock in rate & order</button>
+</div>
+
+    <!-- Gold Purchase Form -->
+    <div id="goldForm" class="exchange-form">
+    <div class="form-group">
+        <label class="form-label">You pay</label>
+        <div class="input-group">
+            <input type="text" id="goldPayAmount" class="amount-input" placeholder="0.00">
+            <div class="currency-select-container">
+                <select id="goldCurrency" class="currency-select">
+                    <option value="CAD">CAD</option>
+                    <option value="USD">USD</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="rate-display">
+        <span class="rate-text">Current gold price: 2,485.75 CAD/oz</span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">You receive</label>
+        <div class="input-group">
+            <input type="text" id="goldReceiveAmount" class="amount-input" placeholder="0.000" readonly>
+            <div class="currency-select-container">
+                <select id="goldType" class="currency-select">
+                    <option value="oz">oz Gold</option>
+                    <option value="g">g Gold</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Gold Type</label>
+        <select id="goldPurity" class="currency-select">
+            <option value="24K">24K Gold (99.99% pure)</option>
+            <option value="22K">22K Gold (91.67% pure)</option>
+            <option value="18K">18K Gold (75.00% pure)</option>
+        </select>
+    </div>
+
+    <div class="payment-section">
+        <div>
+            <div class="payment-method">Pay with: E-Transfer</div>
+            <div class="free-text">Insured delivery available</div>
+        </div>
+        <div class="pickup-info">
+            <div>Available for pickup</div>
+            <div style="font-weight: 500;">Today</div>
+        </div>
+    </div>
+
+    <button onclick="showGoldOrderForm()" class="submit-button">Lock in price & buy</button>
+</div>
+</div>

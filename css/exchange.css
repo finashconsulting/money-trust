@@ -1,0 +1,696 @@
+/* ==========================================================================
+   1. Base Container Styles
+   ========================================================================== */
+.exchange-container {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   2. Tab Navigation Styles
+   ========================================================================== */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 20px;
+    background: #f8f9fa;
+}
+
+.tab {
+    padding: 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 16px;
+    position: relative;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.tab:hover {
+    color: #5850eb;
+}
+
+.tab.active {
+    color: #5850eb;
+    font-weight: 500;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #5850eb;
+}
+
+/* ==========================================================================
+   3. Form Container Styles
+   ========================================================================== */
+.exchange-form {
+    padding: 24px;
+    display: none;
+}
+
+.exchange-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Updated Input Group Styles */
+.input-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ==========================================================================
+   4. Currency Input and Select Styles
+   ========================================================================== */
+.amount-input {
+    flex: 3;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.amount-input:focus {
+    outline: none;
+    border-color: #5850eb;
+}
+
+.currency-select-container {
+    flex: 1;
+    min-width: 110px;
+    max-width: 130px;
+    position: relative;
+}
+
+.currency-select {
+    width: 100%;
+    padding: 12px 32px 12px 46px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f8f9fa;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    text-overflow: '';
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Add this new style */
+.currency-select option {
+    font-size: 12px;
+}
+
+.currency-select:focus {
+    outline: none;
+    border-color: #5850eb;
+}
+
+.selected-flag {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   5. Rate Display and Rate Section Styles
+   ========================================================================== */
+.rate-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.rate-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    color: #666;
+    margin: 24px 0;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.rate-with-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.switch-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+
+.rate-refresh {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #e8f5e9;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #2e7d32;
+    margin-left: 8px;
+}
+
+@keyframes refreshPulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.rate-refresh.updating {
+    animation: refreshPulse 1s infinite;
+}
+
+/* ==========================================================================
+   6. Swap Button Styles
+   ========================================================================== */
+.swap-button {
+    width: 32px;
+    height: 32px;
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0; /* Remove default margin */
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.swap-button:hover {
+    background: #f0f0f0;
+    border-color: #d0d0d0;
+}
+
+.swap-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ==========================================================================
+   7. Payment Section Styles
+   ========================================================================== */
+.payment-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.payment-method {
+    color: #333;
+    font-weight: 500;
+}
+
+.free-text {
+    color: #5850eb;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.pickup-info {
+    text-align: right;
+    color: #666;
+}
+
+/* ==========================================================================
+   8. Submit Button Styles
+   ========================================================================== */
+.submit-button {
+    width: 100%;
+    padding: 16px;
+    background: #28c840;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 24px;
+}
+
+.submit-button:hover {
+    background: #24b639;
+}
+
+/* ==========================================================================
+   9. Gold Form Specific Styles
+   ========================================================================== */
+#goldForm .form-group {
+    margin-bottom: 24px;
+}
+
+#goldForm .form-label {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+#goldForm .input-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#goldForm .amount-input {
+    flex: 3;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+#goldForm #goldReceiveAmount {
+    flex: 2;
+    background-color: transparent;
+}
+
+#goldForm .currency-display {
+    padding: 12px 24px;
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    white-space: nowrap;
+}
+
+#goldForm .unit-select {
+    width: 110px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f8f9fa;
+    font-size: 16px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+}
+
+#goldForm .purity-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f8f9fa;
+    font-size: 16px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+}
+
+#goldForm select:focus,
+#goldForm .amount-input:focus {
+    outline: none;
+    border-color: #5850eb;
+}
+
+/* ==========================================================================
+   10. Responsive Styles
+   ========================================================================== */
+@media (max-width: 768px) {
+    .exchange-form {
+        padding: 16px;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .currency-select-container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .amount-input {
+        width: 100%;
+    }
+
+    .payment-section {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .pickup-info {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabs {
+        padding: 0 10px;
+    }
+
+    .tab {
+        padding: 15px 10px;
+        font-size: 14px;
+    }
+
+    .exchange-form {
+        padding: 16px;
+    }
+
+    .rate-section {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .rate-display {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    #goldForm .input-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    #goldForm .unit-select {
+        width: 100%;
+    }
+
+    #goldForm .currency-display {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   11. Modal/Order Form Styles
+   ========================================================================== */
+#orderFormContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.order-form {
+    background: white;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Order Form Navigation */
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #5850eb;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 24px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #f5f5f7;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: #e8e8e8;
+}
+
+/* Order Summary Styles */
+.order-summary {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0 32px 0;
+}
+
+.order-summary h3 {
+    color: #333;
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    padding: 8px 0;
+}
+
+/* Form Sections */
+.form-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.form-section h3 {
+    color: #1a365d;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 3fr 2fr 2fr;
+    gap: 24px;
+}
+
+/* Form Elements */
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form input[type="tel"],
+.order-form input[type="date"],
+.order-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.order-form input:focus,
+.order-form select:focus {
+    outline: none;
+    border-color: #5850eb;
+}
+
+/* Delivery Options */
+.delivery-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0;
+}
+
+.delivery-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.delivery-option:hover {
+    border-color: #5850eb;
+    box-shadow: 0 2px 8px rgba(88,80,235,0.1);
+}
+
+.option-title {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.option-description {
+    display: block;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Total Section */
+.total-section {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 32px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: #666;
+}
+
+.total-row.total {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 8px;
+    padding-top: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    background: #f5f5f7;
+    color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #orderFormContainer {
+        padding: 1rem;
+    }
+
+    .order-form {
+        padding: 24px;
+        margin: 1rem;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .delivery-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .order-form {
+        padding: 16px;
+    }
+
+    .close-button {
+        top: 12px;
+        right: 12px;
+    }
+
+    .back-button {
+        margin-top: 40px;
+    }
+}
