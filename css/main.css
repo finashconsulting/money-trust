@@ -17,6 +17,7 @@ color:white;
 }
 
 .navbar ul {
+	color:white;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -25,6 +26,7 @@ color:white;
 }
 
 .navbar li {
+	color:white
   display: inline;
 }
 
