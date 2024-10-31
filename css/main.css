@@ -6,6 +6,54 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
+/* Make navbar fixed */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+}
+
+.navbar a:hover {
+  background-color: #555;
+}
+
+/* Add padding to the top of sections to avoid overlap with fixed navbar */
+section {
+  padding-top: 80px;
+  margin-top: -80px;
+}
+
+/* Basic styling for each section */
+section {
+  padding: 50px;
+  border-bottom: 1px solid #ddd;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 	body {
     background: linear-gradient(135deg, #024f7b 0%, #7cbd87 100%);
